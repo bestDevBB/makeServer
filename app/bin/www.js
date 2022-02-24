@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+/* eslint-disable */
 "use strict";
 
 const app = require('../app.js');
