@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "user strict";
 
 // const { Op } = require('sequelize');
@@ -35,3 +36,22 @@ const userDao = {
 
 // module.exports = userDao;
 module.exports = userDao;
+=======
+"use strict";
+
+const { Op } = require('sequelize');
+const { User } = require('../models/index.js');
+
+const dao = {
+
+  // insert
+  async insertUser(params) {
+    try {
+      await User.create(params);
+      return params;
+    } catch(err) {
+      return err;
+    };
+  }
+}
+>>>>>>> dae7ab200864ee11604ecda1119a83eab23a647c
