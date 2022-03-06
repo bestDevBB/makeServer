@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-/* eslint-disable */
 "use strict";
 
 const express = require('express');
