@@ -1,47 +1,65 @@
-"use strict";
-
 /* User Table Model */
-"use strict";
+
 
 const Sequelize = require('sequelize');
 
 module.exports = class User extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            userId: {
-                type: Sequelize.STRING(20)
+            user_id: {
+                type: Sequelize.STRING(20),
+                allowNull: false,
+                unique: true
             },
-            userPw: {
+            user_pw: {
                 type: Sequelize.STRING(15),
                 allowNull: false
             },
-            userName: {
-                type: Sequelize.STRING(20)
+            salt: {
+                type: Sequelize.STRING(100),
+                allowNull: false,
             },
-            userEmail: {
-                type: Sequelize.STRING(30)
+            user_name: {
+                type: Sequelize.STRING(20),
+                allowNull: false,
             },
-            userPhoneNumber: {
-                type: Sequelize.STRING(15)
+            user_email: {
+                type: Sequelize.STRING(30),
+                allowNull: false,
             },
-            userBirth: {
-                type: Sequelize.STRING(10)
+            user_phonenumber: {
+                type: Sequelize.STRING(15),
+                allowNull: false,
             },
-            userAddr1: {
-                type: Sequelize.STRING(30)
+            user_birth: {
+                type: Sequelize.STRING(10),
+                allowNull: false,
             },
-            userAddr2: {
-                type: Sequelize.STRING(50)
+            user_zip: {
+                type: Sequelize.STRING(50),
+                allowNull: false,
+            },
+            user_address1: {
+                type: Sequelize.STRING(30),
+                allowNull: false,
+            },
+            user_address2: {
+                type: Sequelize.STRING(50),
+                allowNull: false,
             }
         }, {
             sequelize, // Database Connection
             // underscored: true, // true: underscored, false: camelCase
-            underscored: false, // true: underscored, false: camelCase
+            underscored: true, // true: underscored, false: camelCase
             timestamp: true, // createAt, updatedAt
-            paranoid: true // deletedAt
+            modelName: 'User',
+            tableName: 'Users',
+            paranoid: true, // deletedAt
+            charset: "utf8",
+            collate: "utf8_general_ci"
         });
-    };
-    static associations(db) {
-
+    }
+    static associate(db) {
+        db.User.hasMany();
     };
 };

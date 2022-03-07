@@ -49,6 +49,6 @@ module.exports = class Car extends Sequelize.Model {
     );
   };
   static associate(db) {
-
+    
   };
 };
